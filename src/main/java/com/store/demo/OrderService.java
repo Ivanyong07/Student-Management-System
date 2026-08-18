@@ -1,7 +1,5 @@
 package com.store.demo;
 
-import java.util.ArrayList;
-
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,20 +12,35 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public void placeOrder(OrderRequest request) {
-        double amount = request.getQuantity() * 10;
-        ArrayList<String> item = request.getItem();
-        String paymentMethod = request.getPaymentMethod();
-        paymentService.processPayment(amount);
+    public Order placeOrder(OrderRequest request) {
+        paymentService.processPayment(request.getAmount());
 
-        Order order = new Order(request.getAmount(), request.getPaymentMethod(), request.getQuantity(), item);
+        Order order = new Order(
+                request.getAmount(),
+                request.getPaymentMethod(),
+                request.getQuantity(),
+                request.getItem());
+
         return orderRepository.save(order);
     }
 
-    public void cancelOrder() {
+    public void cancelOrder(Long id) {
+        if (!orderRepository.existsById(id)) {
+            throw new RuntimeException("Order not found with id: " + id);
+        }
+
+        orderRepository.deleteById(id);
     }
 
-    public PaymentService getPaymentService() {
-        return paymentService;
+    public Order updateOrder(Long id, OrderRequest request) {
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Order not dound with id: " + id));
+
+        order.setAmount(request.getAmount());
+        order.setPaymentMethod(request.getPaymentMethod());
+        order.setQuantity(request.getQuantity());
+        order.setItem(request.getItem());
+
+        return orderRepository.save(order);
     }
 }

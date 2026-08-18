@@ -1,20 +1,36 @@
 package com.store.demo;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class OrderRequest {
 
-    private ArrayList<String> item;
+    private List<String> item;
     private String paymentMethod;
     private double amount;
     private int quantity;
 
-    public String getItem() {
+    public List<String> getItem() {
         return item;
     }
 
-    public void setItem(String item) {
+    public void setItem(List<String> item) {
         this.item = item;
+    }
+
+    public String getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public int getQuantity() {

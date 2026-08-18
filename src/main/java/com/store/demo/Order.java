@@ -1,6 +1,7 @@
 package com.store.demo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.*;
 
@@ -14,13 +15,16 @@ public class Order {
 
     private double amount;
     private String paymentMethod;
-    private ArrayList<String> item;
+
+    @ElementCollection
+    private List<String> item;
+
     private int quantity;
 
     public Order() {
     }
 
-    public Order(double amount, String paymentMethod, int quantity, ArrayList<String> item) {
+    public Order(double amount, String paymentMethod, int quantity, List<String> item) {
         this.amount = amount;
         this.paymentMethod = paymentMethod;
         this.quantity = quantity;
@@ -43,7 +47,23 @@ public class Order {
         return quantity;
     }
 
-    public ArrayList<String> item() {
+    public List<String> getItem() {
         return item;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setPaymentMethod(String paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setItem(List<String> item) {
+        this.item = item;
     }
 }
