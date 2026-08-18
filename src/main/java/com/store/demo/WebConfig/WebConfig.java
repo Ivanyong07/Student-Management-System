@@ -1,4 +1,4 @@
-package com.store.demo;
+package com.store.demo.WebConfig;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;

@@ -2,6 +2,7 @@ package com.store.demo;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,8 +11,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.store.demo.Order.Order;
+import com.store.demo.Order.OrderRepository;
+import com.store.demo.Order.OrderService;
+import com.store.demo.Order.dto.OrderRequest;
+
+import jakarta.validation.Valid;
+
 import org.springframework.web.bind.annotation.RequestParam;
+
+// Full CRUD REST API (Create, Read, Update, Delete)
+// Database persistence with H2 + JPA
+// Input validation with @Valid + Bean Validation annotations
+// Global exception handling (clean 400s for bad input, 404s for not-found)
+// Unit tests + controller tests
+// Working HTML admin page
+// Connect spring boot with mysql
 
 @SpringBootApplication
 public class DemoApplication {
@@ -34,6 +52,15 @@ class HelloWorld {
 		this.orderRepository = orderRepository;
 	}
 
+	@Value("${spring.application.name}")
+	private String appName;
+
+	@RequestMapping("/index")
+	public String index() {
+		System.out.println("App Name: " + appName);
+		return "index.html";
+	}
+
 	@GetMapping("/")
 	public String home() {
 		return "Hello Spring Boot";
@@ -41,7 +68,7 @@ class HelloWorld {
 
 	// Post new things
 	@PostMapping("/orders")
-	public Order createOrder(@RequestBody OrderRequest request) {
+	public Order createOrder(@Valid @RequestBody OrderRequest request) {
 		return orderService.placeOrder(request);
 	}
 
@@ -57,7 +84,7 @@ class HelloWorld {
 	}
 
 	@PutMapping("/orders/{id}")
-	public Order updateOrder(@PathVariable Long id, @RequestBody OrderRequest request) {
+	public Order updateOrder(@PathVariable Long id, @Valid @RequestBody OrderRequest request) {
 		return orderService.updateOrder(id, request);
 	}
 

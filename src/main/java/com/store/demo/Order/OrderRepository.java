@@ -1,4 +1,4 @@
-package com.store.demo;
+package com.store.demo.Order;
 
 //This alone gives you .save(), .findAll(), .findById(), .deleteById() — no code needed inside it.
 

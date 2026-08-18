@@ -1,4 +1,4 @@
-package com.store.demo;
+package com.store.demo.Order;
 
 public interface PaymentService {
 

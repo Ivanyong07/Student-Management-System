@@ -1,4 +1,4 @@
-package com.store.demo;
+package com.store.demo.Order;
 
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.store.demo;
+package com.store.demo.Order;
 
 import java.util.ArrayList;
 import java.util.List;
