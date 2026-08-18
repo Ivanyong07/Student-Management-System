@@ -1,8 +1,11 @@
 package com.store.demo.Order;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.store.demo.Order.dto.OrderRequest;
+import com.store.demo.Order.dto.OrderResponse;
 
 @Service
 public class OrderService {
@@ -14,7 +17,7 @@ public class OrderService {
         this.orderRepository = orderRepository;
     }
 
-    public Order placeOrder(OrderRequest request) {
+    public OrderResponse placeOrder(OrderRequest request) {
         paymentService.processPayment(request.getAmount());
 
         Order order = new Order(
@@ -23,7 +26,17 @@ public class OrderService {
                 request.getQuantity(),
                 request.getItem());
 
-        return orderRepository.save(order);
+        Order savedOrder = orderRepository.save(order);
+
+        OrderResponse response = new OrderResponse();
+
+        response.setOrderId(savedOrder.getId());
+        response.setItem(savedOrder.getItem());
+        response.setPaymentMethod(savedOrder.getPaymentMethod());
+        response.setAmount(savedOrder.getAmount());
+        response.setQuantity(savedOrder.getQuantity());
+
+        return response;
     }
 
     public void cancelOrder(Long id) {
@@ -34,15 +47,61 @@ public class OrderService {
         orderRepository.deleteById(id);
     }
 
-    public Order updateOrder(Long id, OrderRequest request) {
+    public OrderResponse updateOrder(Long id, OrderRequest request) {
         Order order = orderRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Order not dound with id: " + id));
+                .orElseThrow(() -> new OrderNotFoundException("Order not found with id: " + id));
 
         order.setAmount(request.getAmount());
         order.setPaymentMethod(request.getPaymentMethod());
         order.setQuantity(request.getQuantity());
         order.setItem(request.getItem());
 
-        return orderRepository.save(order);
+        Order savedOrder = orderRepository.save(order);
+
+        OrderResponse response = new OrderResponse();
+
+        response.setOrderId(savedOrder.getId());
+        response.setItem(savedOrder.getItem());
+        response.setPaymentMethod(savedOrder.getPaymentMethod());
+        response.setAmount(savedOrder.getAmount());
+        response.setQuantity(savedOrder.getQuantity());
+
+        return response;
+    }
+
+    public OrderResponse getOrder(Long id) {
+
+        // Get Order from database
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Order not found"));
+
+        // Create empty response
+        OrderResponse response = new OrderResponse();
+
+        // Copy Order → Response
+        response.setOrderId(order.getId());
+        response.setItem(order.getItem());
+        response.setPaymentMethod(order.getPaymentMethod());
+        response.setAmount(order.getAmount());
+        response.setQuantity(order.getQuantity());
+
+        return response;
+    }
+
+    public List<OrderResponse> getAllOrders() {
+        return orderRepository
+                .findAll()
+                .stream()
+                .map(order -> {
+                    OrderResponse response = new OrderResponse();
+
+                    response.setOrderId(order.getId());
+                    response.setItem(order.getItem());
+                    response.setPaymentMethod(order.getPaymentMethod());
+                    response.setAmount(order.getAmount());
+                    response.setQuantity(order.getQuantity());
+
+                    return response;
+                }).toList();
     }
 }

@@ -18,6 +18,7 @@ import com.store.demo.Order.Order;
 import com.store.demo.Order.OrderRepository;
 import com.store.demo.Order.OrderService;
 import com.store.demo.Order.dto.OrderRequest;
+import com.store.demo.Order.dto.OrderResponse;
 
 import jakarta.validation.Valid;
 
@@ -68,23 +69,23 @@ class HelloWorld {
 
 	// Post new things
 	@PostMapping("/orders")
-	public Order createOrder(@Valid @RequestBody OrderRequest request) {
+	public OrderResponse createOrder(@Valid @RequestBody OrderRequest request) {
 		return orderService.placeOrder(request);
 	}
 
 	@GetMapping("/orders")
-	public List<Order> getAllOrders() {
-		return orderRepository.findAll();
+	public List<OrderResponse> getAllOrders() {
+		return orderService.getAllOrders();
 	}
 
 	// Get items
 	@GetMapping("/orders/{id}")
-	public Order getOrder(@PathVariable Long id) {
-		return orderRepository.findById(id).orElseThrow(() -> new RuntimeException("Order not found with id: " + id));
+	public OrderResponse getOrder(@PathVariable Long id) {
+		return orderService.getOrder(id);
 	}
 
 	@PutMapping("/orders/{id}")
-	public Order updateOrder(@PathVariable Long id, @Valid @RequestBody OrderRequest request) {
+	public OrderResponse updateOrder(@PathVariable Long id, @Valid @RequestBody OrderRequest request) {
 		return orderService.updateOrder(id, request);
 	}
 
