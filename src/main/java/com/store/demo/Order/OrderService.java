@@ -1,11 +1,11 @@
-package com.store.demo.Order;
+package com.store.demo.order;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.store.demo.Order.dto.OrderRequest;
-import com.store.demo.Order.dto.OrderResponse;
+import com.store.demo.order.dto.OrderRequest;
+import com.store.demo.order.dto.OrderResponse;
 
 @Service
 public class OrderService {

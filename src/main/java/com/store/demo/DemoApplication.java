@@ -14,15 +14,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.store.demo.Order.Order;
-import com.store.demo.Order.OrderRepository;
-import com.store.demo.Order.OrderService;
-import com.store.demo.Order.dto.OrderRequest;
-import com.store.demo.Order.dto.OrderResponse;
+import com.store.demo.order.Order;
+import com.store.demo.order.OrderRepository;
+import com.store.demo.order.OrderService;
+import com.store.demo.order.dto.OrderRequest;
+import com.store.demo.order.dto.OrderResponse;
 
 import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.RequestParam;
+
+// Student Registration – Add and maintain student details such as name, ID, contact information, and admission records.
+// Attendance Management – Record and monitor daily attendance of students.
+// Course and Class Management – Assign students to classes, subjects, and teachers.
+// Examination Management – Schedule exams, record marks, and generate report cards.
+// Fee Management – Track fee payments, pending dues, and generate receipts.
+// Timetable Management – Create and manage class schedules.
+// Library Management – Manage book issuance, returns, and fines (if integrated).
+// Communication – Send announcements, notices, SMS, or emails to students and parents.
+// Student Performance Tracking – Monitor academic progress and generate performance reports.
+// User Management – Provide different access levels for administrators, teachers, students, and parents.
+// Report Generation – Generate reports on attendance, fees, academic performance, and admissions.
+// Document Management – Store student documents such as certificates, ID proofs, and transcripts securely.
 
 // Full CRUD REST API (Create, Read, Update, Delete)
 // Database persistence with H2 + JPA
@@ -38,7 +51,6 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
-
 }
 
 // java spring boot is using mvc (model view controller) for the architecture

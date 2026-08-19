@@ -1,4 +1,4 @@
-package com.store.demo.User;
+package com.store.demo.user;
 
 public class UserService {
 

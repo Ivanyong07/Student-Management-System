@@ -1,4 +1,4 @@
-package com.store.demo.Order;
+package com.store.demo.order;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;

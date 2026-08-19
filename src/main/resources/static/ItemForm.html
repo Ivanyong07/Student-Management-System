@@ -42,11 +42,7 @@
           <th>Quantity</th>
         </tr>
       </thead>
-      <tbody id="ordersBody">
-        <td>
-          <button onclick="openEditDialog(${JSON.stringify(o)})">Edit</button>
-        </td>
-      </tbody>
+      <tbody id="ordersBody"></tbody>
     </table>
 
     <dialog id="editDialog">
@@ -88,17 +84,17 @@
             <td>${a.paymentMethod}</td>
             <td>${a.amount}</td>
             <td>${a.quantity}</td>
+            <td><button onclick='openEditDialog(${JSON.stringify(a)})'>Edit</button></td>
           `;
 
           body.appendChild(row);
         });
       }
 
+      document.getElementById("editId").value = order.id;
+      document.getElementById("editItem").value = (order.item || []).join(", ");
+
       function openEditDialog(order) {
-        document.getElementById("editId").value = order.id;
-        document.getElementById("editItem").value = (order.item || []).join(
-          ", ",
-        );
         document.getElementById("editPaymentMethod").value =
           order.paymentMethod;
         document.getElementById("editAmount").value = order.amount;
@@ -116,7 +112,7 @@
           e.preventDefault();
           const status = document.getElementById("status");
           status.textContent = "Saving...";
-          status.className = " ";
+          status.className = "";
 
           const payload = {
             item: document

@@ -1,4 +1,4 @@
-package com.store.demo.Order.dto;
+package com.store.demo.order.dto;
 
 import java.util.List;
 
