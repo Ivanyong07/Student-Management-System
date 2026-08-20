@@ -1,7 +1,5 @@
 package com.store.demo.user.entity;
 
-import com.store.demo.Role;
-
 import jakarta.persistence.*;
 
 //userid
@@ -33,11 +31,10 @@ public abstract class User {
     protected Role role;
 
     protected String email;
-    protected String course;
     protected String contactNumber;
 
     public User(String username, String firstname,
-            String lastname, String password, Role role, String email, String course, String contactNumber) {
+            String lastname, String password, Role role, String email, String contactNumber) {
 
         this.username = username;
         this.firstname = firstname;
@@ -45,7 +42,6 @@ public abstract class User {
         this.password = password;
         this.role = role;
         this.email = email;
-        this.course = course;
         this.contactNumber = contactNumber;
     }
 
@@ -99,14 +95,6 @@ public abstract class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
     }
 
     public String getContactNumber() {
