@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.store.demo.NotFoundException;
 import com.store.demo.order.dto.OrderRequest;
 import com.store.demo.order.dto.OrderResponse;
 
@@ -49,7 +50,7 @@ public class OrderService {
 
     public OrderResponse updateOrder(Long id, OrderRequest request) {
         Order order = orderRepository.findById(id)
-                .orElseThrow(() -> new OrderNotFoundException("Order not found with id: " + id));
+                .orElseThrow(() -> new NotFoundException("Order not found with id: " + id));
 
         order.setAmount(request.getAmount());
         order.setPaymentMethod(request.getPaymentMethod());
