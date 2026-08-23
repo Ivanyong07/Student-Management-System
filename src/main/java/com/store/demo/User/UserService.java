@@ -28,15 +28,6 @@ public class UserService {
         String hashedPassword = passwordEncoder.encode(request.getPassword());
         User user = switch (request.getRole()) {
             case ADMIN -> new Admin(request.getUsername(), request.getFirstname(), request.getLastname(),
-<<<<<<< Updated upstream
-                    request.getPassword(), request.getRole(), request.getEmail(), request.getContactNumber(),
-                    request.getOfficeNumber());
-            case STUDENT -> new Student(request.getUsername(), request.getFirstname(), request.getLastname(),
-                    request.getPassword(), request.getRole(), request.getEmail(), request.getContactNumber(),
-                    request.getCourse());
-            case TEACHER -> new Teacher(request.getUsername(), request.getFirstname(), request.getLastname(),
-                    request.getPassword(), request.getRole(), request.getEmail(), request.getContactNumber(),
-=======
                     hashedPassword, request.getRole(), request.getEmail(), request.getContactNumber(),
                     request.getOfficeNumber());
 
@@ -47,7 +38,6 @@ public class UserService {
 
             case TEACHER -> new Teacher(request.getUsername(), request.getFirstname(), request.getLastname(),
                     hashedPassword, request.getRole(), request.getEmail(), request.getContactNumber(),
->>>>>>> Stashed changes
                     request.getSubject());
         };
         User saved = userRepository.save(user);
