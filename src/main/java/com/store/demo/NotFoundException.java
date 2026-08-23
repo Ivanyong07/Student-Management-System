@@ -1,0 +1,9 @@
+package com.store.demo;
+
+public class NotFoundException extends RuntimeException {
+
+    public NotFoundException(String message) {
+        super(message);
+    }
+
+}
