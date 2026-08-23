@@ -7,6 +7,9 @@ public class Admin extends User {
 
     private String officeNumber;
 
+    protected Admin() {
+    }
+
     public Admin(String username, String firstname, String lastname,
             String password, Role role, String email, String contactNumber, String officeNumber) {
 

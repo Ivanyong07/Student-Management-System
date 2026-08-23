@@ -33,6 +33,9 @@ public abstract class User {
     protected String email;
     protected String contactNumber;
 
+    protected User() {
+    }
+
     public User(String username, String firstname,
             String lastname, String password, Role role, String email, String contactNumber) {
 

@@ -7,6 +7,10 @@ public class Student extends User {
 
     private String course;
 
+    protected Student() {
+
+    }
+
     public Student(String username, String firstname, String lastname,
             String password, Role role, String email, String contactNumber, String course) {
 

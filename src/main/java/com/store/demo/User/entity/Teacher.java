@@ -7,6 +7,9 @@ public class Teacher extends User {
 
     private String subject;
 
+    protected Teacher() {
+    }
+
     public Teacher(String username, String firstname, String lastname,
             String password, Role role, String email, String contactNumber, String subject) {
 
