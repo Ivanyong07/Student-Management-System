@@ -1,0 +1,67 @@
+:root{
+    --primary-color: #2563ed;
+    --font-size-base: 16px;
+    --spacing-md: 12px;
+    --bg-color: white;
+    --text-color: #222;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    min-height: 100vh;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    background: var(--bg-color);
+
+    display: flex;
+    flex-direction: row;
+}
+
+#big-description,
+#login-form{
+    width: 50%;
+}
+
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    #big-description,
+    #login-form {
+        width: 100%;
+    }
+}
+#big-description{
+    background-color: #2563ed;
+}
+
+#logo{
+    width: 200px;
+}
+
+#logo-img{
+    width: 100%;
+    height: auto;
+    margin: 20px;
+    animation: slideUp 1s ease-in;
+}
+
+#box-description{
+    display: flex;
+    gap: 20px;
+}
+
+#login-form{
+    background-color: bisque;
+}
+
+#back-link{
+    font-size:10px;
+    color: rgb(44, 43, 43);
+}
