@@ -1,9 +1,3 @@
-const username = document.getElementById("username").value;
-const password = document.getElementById("password").value;
-
-username.trim();
-password.trim();
-
 const API_BASE = "http://localhost:8080";
 
 function login(username, password){
@@ -23,4 +17,11 @@ function login(username, password){
     });
 }
 
-login(username, password);
+document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    login(username, password);
+});

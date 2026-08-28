@@ -21,15 +21,6 @@ public class UserRequest {
     @NotBlank(message = "Password is required")
     private String password;
 
-<<<<<<< Updated upstream
-    private Role role;
-    private String email;
-    private String course;
-    private String contactNumber;
-    private String officeNumber;
-    private String subject;
-
-=======
     @NotNull(message = "Role is required")
     private Role role;
 
@@ -52,101 +43,74 @@ public class UserRequest {
     private String enrollmentDate;
     private String advisor;
 
->>>>>>> Stashed changes
     public String getUsername() {
         return username;
     }
 
-<<<<<<< Updated upstream
-=======
     public void setUsername(String username) {
         this.username = username;
     }
 
->>>>>>> Stashed changes
     public String getFirstname() {
         return firstname;
     }
 
-<<<<<<< Updated upstream
-=======
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
 
->>>>>>> Stashed changes
     public String getLastname() {
         return lastname;
     }
 
-<<<<<<< Updated upstream
-=======
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
 
->>>>>>> Stashed changes
     public String getPassword() {
         return password;
     }
 
-<<<<<<< Updated upstream
-=======
     public void setPassword(String password) {
         this.password = password;
     }
 
->>>>>>> Stashed changes
     public Role getRole() {
         return role;
     }
 
-<<<<<<< Updated upstream
-=======
     public void setRole(Role role) {
         this.role = role;
     }
 
->>>>>>> Stashed changes
     public String getEmail() {
         return email;
     }
 
-<<<<<<< Updated upstream
-=======
     public void setEmail(String email) {
         this.email = email;
     }
 
->>>>>>> Stashed changes
     public String getCourse() {
         return course;
     }
 
-<<<<<<< Updated upstream
-=======
     public void setCourse(String course) {
         this.course = course;
     }
 
->>>>>>> Stashed changes
     public String getContactNumber() {
         return contactNumber;
     }
 
-<<<<<<< Updated upstream
-=======
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
     }
 
->>>>>>> Stashed changes
     public String getOfficeNumber() {
         return officeNumber;
     }
 
-<<<<<<< Updated upstream
-=======
     public void setOfficeNumber(String officeNumber) {
         this.officeNumber = officeNumber;
     }
@@ -183,16 +147,12 @@ public class UserRequest {
         this.advisor = advisor;
     }
 
->>>>>>> Stashed changes
     public String getSubject() {
         return subject;
     }
 
-<<<<<<< Updated upstream
-=======
     public void setSubject(String subject) {
         this.subject = subject;
     }
 
->>>>>>> Stashed changes
 }

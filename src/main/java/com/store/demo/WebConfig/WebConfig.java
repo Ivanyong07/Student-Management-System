@@ -14,15 +14,4 @@ public class WebConfig implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/ItemForm").setViewName("forward:/ItemForm.html");
     }
-
-    @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(
-                auth -> auth.requestMatchers("/orders/**", "/users", "/*.html")
-                        .permitAll()
-                        .anyRequest()
-                        .permitAll());
-
-        return http.build();
-    }
 }
