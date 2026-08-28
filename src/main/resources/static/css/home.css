@@ -1,4 +1,4 @@
-:root{
+:root {
     --primary-color: #2563ed;
     --font-size-base: 16px;
     --spacing-md: 12px;
@@ -7,28 +7,30 @@
     --text-color: #222;
 }
 
-[data-theme="dark"]{
+[data-theme="dark"] {
     --bg-color: #1a1a1a;
     --text-color: white;
 }
 
 @keyframes slideUp {
-    from { 
+    from {
         opacity: 0;
         transform: translateY(20px);
-    } to {
+    }
+
+    to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-body{
+body {
     font-family: var(--font-base);
     color: var(--text-color);
     background: var(--bg-color);
 }
 
-#header{
+#header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -40,18 +42,18 @@ body{
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-#logo{
+#logo {
     width: 100px;
 }
 
-#logo-img{
+#logo-img {
     width: 100%;
     height: auto;
     margin: 20px;
     animation: slideUp 1s ease-in;
 }
 
-#navbar{
+#navbar {
     display: flex;
     align-items: center;
     gap: 50px;
@@ -59,14 +61,14 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-#navbar a{
+#navbar a {
     text-decoration: none;
     color: var(--text-color);
     font-weight: 500;
     animation: slideUp 1s ease-in;
 }
 
-#login-btn{
+#login-btn {
     display: flex;
     width: 70px;
     height: 30px;
@@ -78,14 +80,7 @@ body{
     align-items: center;
 }
 
-#login-btn:hover{
+#login-btn:hover {
     background-color: rgb(125, 125, 125);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
-
-#back-link{
-    font-size:smaller;
-}
-
-
-
